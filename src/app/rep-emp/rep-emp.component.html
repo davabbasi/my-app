@@ -1,0 +1,47 @@
+<hr>
+<div class="container-fluid">
+  <input type="text" name="item-perpage" id="filter" (keyup)="readall($event)" placeholder="Filter">
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Family</th>
+        <th scope="col">codemelli</th>
+        <th scope="col">mobilenumber</th>
+        <th scope="col">emailaddress</th>
+        <th scope="col">Actions</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of Emps;i:index">
+        <th scope="row"  >{{item.id}}</th>
+        <td>{{item.FName}}</td>
+        <td>{{item.LName}}</td>
+        <td>{{item.NationalCode}}</td>
+        <td>{{item.PhoneNumber}}</td>
+        <td>{{item.EmailAddress}}</td>
+        <td>
+            <button type="button" class=" btn btn-primary" >Edit</button>
+            <button type="button" class=" btn btn-danger" (click)="DeleteEmp(item.id)">Delete</button>
+
+        </td>
+      </tr>
+    
+    </tbody>
+  </table>
+
+  <label style="margin-left: 20px;">PageNumber:</label>
+  <input style="margin-left: 20px;" type="text" name="PageNumber" id="PageNumber" (keyup)="readall3($event)" value="1">
+  <label style="margin-left: 20px;">Item Count Per Page:</label>
+  <select  style="margin-left: 20px;" id="mySelect" [(ngModel)]="InterFace.ItemCountPerPage" name="ItemCountPerPage" (change)="GetAllEmps(InterFace)">
+    <option default>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>5</option>
+    <option>25</option>
+    <option>50</option>
+    <option>100</option>
+  </select>
+</div>

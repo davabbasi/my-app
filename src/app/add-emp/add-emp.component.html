@@ -1,0 +1,33 @@
+<div class="container mt-3">
+    <form [formGroup]="Empform" (ngSubmit)="SubmitForm()">
+        <div class="mb-3 mt-3">
+            <label for="FName">FirstName:</label>
+            <input type="text" class="form-control" id="FName" placeholder="Enter FirsName" name="FName" formControlName="FName" required>
+        </div>
+          <div class="mb-3 mt-3">
+            <label for="LName">LastName:</label>
+            <input type="text" class="form-control" id="LName" placeholder="Enter LastName" name="LName" formControlName="LName" required>
+          </div>
+
+          <div class="mb-3 mt-3">
+            <label for="NationalCode">NationalCode:</label>
+            <input type="text" class="form-control" id="NationalCode" placeholder="Enter NationalCode" name="NationalCode" formControlName="NationalCode" required>
+        </div>
+
+        <div class="mb-3 mt-3">
+            <label for="PhoneNumber">PhoneNumber:</label>
+            <input type="tel" class="form-control" id="PhoneNumber" placeholder="Enter PhoneNumber" name="PhoneNumber" formControlName="PhoneNumber" required>
+        </div> 
+        <div class="mb-3 mt-3">
+            <label for="EmailAddress">EmailAddress:</label>
+            <input type="email" class="form-control" id="EmailAddress" placeholder="Enter EmailAddress" name="EmailAddress" formControlName="EmailAddress">
+        </div>
+        <div class="mb-3">
+            <label for="Password">Password:</label>
+            <input type="password" class="form-control" id="Password" placeholder="Enter Password" name="Password" formControlName="Password" required>
+        </div>
+   
+      <button type="submit" class="btn btn-primary" >Submit</button>
+      <button type="reset" class="btn btn-primary">New</button>
+    </form>
+  </div>
