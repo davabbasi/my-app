@@ -29,8 +29,8 @@ export class RepEmpComponent  {
     const filterValue = (_event.target as HTMLInputElement).value;
 
     this.InterFace.Filter=filterValue;
-    this.GetAllEmps(this.InterFace)
 
+    this.GetAllEmps(this.InterFace)
 
 
   }
@@ -47,14 +47,18 @@ export class RepEmpComponent  {
 
   }
   GetAllEmps(data:any){
+   
     this.service.GetAllEmps(data).subscribe(
       rdata=>{
       this.Emps=rdata;
-    })   
+    })  
 
   }
 
-  DeleteEmp(id:number){
+
+
+
+  DeleteEmp(id:number): void{
     debugger
     let text='are you sure to delete selected record???????';
     if (confirm(text) == true) {
