@@ -26,8 +26,8 @@ export class AddEmpComponent {
     })
   }
 
-  SubmitForm(){
-    this.srvice.CreateUser(this.Empform.value).subscribe({
+  async SubmitForm(){
+    (await this.srvice.CreateUser(this.Empform.value)).subscribe({
       next(valu:any) {
         alert(valu);
 

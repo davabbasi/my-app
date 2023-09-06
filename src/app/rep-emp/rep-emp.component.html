@@ -15,13 +15,13 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of Emps;i:index">
-        <th scope="row"  >{{item.id}}</th>
-        <td>{{item.FName}}</td>
-        <td>{{item.LName}}</td>
-        <td>{{item.NationalCode}}</td>
-        <td>{{item.PhoneNumber}}</td>
-        <td>{{item.EmailAddress}}</td>
+      <tr *ngFor="let item of Emps;i:index|async">
+        <th scope="row"  >{{item.id|async}}</th>
+        <td>{{item.FName|async}}</td>
+        <td>{{item.LName|async}}</td>
+        <td>{{item.NationalCode|async}}</td>
+        <td>{{item.PhoneNumber|async}}</td>
+        <td>{{item.EmailAddress|async}}</td>
         <td>
             <button type="button" class=" btn btn-primary" >Edit</button>
             <button type="button" class=" btn btn-danger" (click)="DeleteEmp(item.id)">Delete</button>

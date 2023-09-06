@@ -3,6 +3,8 @@ import { ServicesService } from './../services.service';
 import { Component } from '@angular/core';
 import { GetEmployeesList } from '../get-employees-list';
 import { Data } from '@angular/router';
+import { Observable } from 'rxjs';
+import { interval, firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-rep-emp',
@@ -20,40 +22,38 @@ export class RepEmpComponent  {
     ItemCountPerPage: 5,
   }
 
-  ngOnInit(){
-    this.GetAllEmps(this.InterFace)
+  async ngOnInit(){
+   return await this.GetAllEmps(this.InterFace)
 
   }
 
-  readall(_event:Event){
+ async readall(_event:Event){
     const filterValue = (_event.target as HTMLInputElement).value;
 
     this.InterFace.Filter=filterValue;
 
-    this.GetAllEmps(this.InterFace)
-
+   return await this.GetAllEmps(this.InterFace);
 
   }
 
-  readall2(_event2:Data){
+  async readall2(_event2:Data){
     this.InterFace.ItemCountPerPage=Number(_event2);
-    this.GetAllEmps(this.InterFace);
+   return await this.GetAllEmps(this.InterFace);
 
   }
-  readall3(_event3:Event){
+  async readall3(_event3:Event){
     const pageNumber= (_event3.target as HTMLInputElement).value;
     this.InterFace.PageNumber=Number(pageNumber)-1;
-    this.GetAllEmps(this.InterFace);
+    return await this.GetAllEmps(this.InterFace);
 
   }
-  GetAllEmps(data:any){
-   
-    this.service.GetAllEmps(data).subscribe(
-      rdata=>{
-      this.Emps=rdata;
-    })  
+   async GetAllEmps(data:any){
+    return  await (this.service.GetData(data));
+    
 
   }
+
+  
 
 
 
@@ -79,7 +79,6 @@ export class RepEmpComponent  {
     
   }
   
-
 
 
 }

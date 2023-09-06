@@ -9,14 +9,14 @@ export class ServicesService {
 
   constructor(private _http:HttpClient) { }
 
-  CreateUser(data:any):Observable<any>{
-    return this._http.post('http://localhost:49990/User/Create',data)
+ async CreateUser(data:any):Promise<Observable<any>>{
+     return  this._http.post('http://localhost:49990/User/Create',data)
 
 
   }
   
-  GetAllEmps(data:any):Observable<any>{
-    return this._http.post('http://localhost:49990/User/ReadAll',data)
+ async GetAllEmps(data:any):Promise<Observable<any>>{
+     return this._http.post('http://localhost:49990/User/ReadAll', data)
   }
 
 
@@ -30,6 +30,18 @@ export class ServicesService {
 
 
   }
+
+
+  async  GetData(this: any, params:any) {
+    const res= await this._http.post('http://localhost:49990/User/ReadAll', params);
+    return await res.json();
+  
+  }
+    
+
+
+
+  
 
 
 
