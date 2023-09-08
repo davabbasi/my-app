@@ -34,7 +34,7 @@ export class ServicesService {
 
   async  GetData(this: any, params:any) {
     const res= await this._http.post('http://localhost:49990/User/ReadAll', params);
-    return await res.json();
+    return await res;
   
   }
     

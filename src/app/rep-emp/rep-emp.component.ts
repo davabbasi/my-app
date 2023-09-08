@@ -48,7 +48,9 @@ export class RepEmpComponent  {
 
   }
    async GetAllEmps(data:any){
-    return  await (this.service.GetData(data));
+
+    const res = await this.service.GetData(data);
+    return await res;
     
 
   }
