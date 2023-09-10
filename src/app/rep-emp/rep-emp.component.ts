@@ -1,10 +1,8 @@
-import { AddEmpComponent } from './../add-emp/add-emp.component';
 import { ServicesService } from './../services.service';
 import { Component } from '@angular/core';
 import { GetEmployeesList } from '../get-employees-list';
 import { Data } from '@angular/router';
-import { Observable } from 'rxjs';
-import { interval, firstValueFrom } from 'rxjs';
+
 
 @Component({
   selector: 'app-rep-emp',
@@ -22,8 +20,10 @@ export class RepEmpComponent  {
     ItemCountPerPage: 5,
   }
 
-   ngOnInit(){
-   return  this.GetAllEmps(this.InterFace)
+   ngOnInit():void{
+    
+     this.GetAllEmps(this.InterFace);
+     
 
   }
 
@@ -47,12 +47,26 @@ export class RepEmpComponent  {
     return  this.GetAllEmps(this.InterFace);
 
   }
-  GetAllEmps(data:any){
+  GetAllEmps(data:GetEmployeesList){
+    
 
-    return this.service.GetAllEmps(data);
+    return this.service.GetAllEmps(data).subscribe({
+      next:(res)=>{
+        this.Emps=res;
+
+      },
+      error:(err)=>{
+        console.log(err);
+      }
+
+
+
+    });
     
 
   }
+
+
 
   
 
@@ -60,7 +74,7 @@ export class RepEmpComponent  {
 
 
   DeleteEmp(id:number): void{
-    debugger
+    
     let text='are you sure to delete selected record???????';
     if (confirm(text) == true) {
       this.service.DeleteEmp(id).subscribe({

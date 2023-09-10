@@ -9,14 +9,16 @@ export class ServicesService {
 
   constructor(private _http:HttpClient) { }
 
- async CreateUser(data:any):Promise<Observable<any>>{
-     return  this._http.post('http://localhost:49990/User/Create',data)
+  CreateUser(data:any):Observable<any>{
+     return  this._http.post('http://localhost:49990/User/Create',data);
 
 
   }
   
   GetAllEmps(data:any):Observable<any>{
-     return this._http.get('http://localhost:49990/User/ReadAll', data)
+    
+     return this._http.post('http://localhost:49990/User/ReadAll',data);
+     
   }
 
 
