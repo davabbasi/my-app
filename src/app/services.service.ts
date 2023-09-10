@@ -15,8 +15,8 @@ export class ServicesService {
 
   }
   
- async GetAllEmps(data:any):Promise<Observable<any>>{
-     return this._http.post('http://localhost:49990/User/ReadAll', data)
+  GetAllEmps(data:any):Observable<any>{
+     return this._http.get('http://localhost:49990/User/ReadAll', data)
   }
 
 
@@ -32,11 +32,7 @@ export class ServicesService {
   }
 
 
-  async  GetData(this: any, params:any) {
-    const res= await this._http.post('http://localhost:49990/User/ReadAll', params);
-    return await res;
-  
-  }
+
     
 
 

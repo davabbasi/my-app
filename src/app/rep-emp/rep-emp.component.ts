@@ -22,35 +22,34 @@ export class RepEmpComponent  {
     ItemCountPerPage: 5,
   }
 
-  async ngOnInit(){
-   return await this.GetAllEmps(this.InterFace)
+   ngOnInit(){
+   return  this.GetAllEmps(this.InterFace)
 
   }
 
- async readall(_event:Event){
+  readall(_event:Event){
     const filterValue = (_event.target as HTMLInputElement).value;
 
     this.InterFace.Filter=filterValue;
 
-   return await this.GetAllEmps(this.InterFace);
+   return  this.GetAllEmps(this.InterFace);
 
   }
 
-  async readall2(_event2:Data){
+   readall2(_event2:Data){
     this.InterFace.ItemCountPerPage=Number(_event2);
-   return await this.GetAllEmps(this.InterFace);
+   return  this.GetAllEmps(this.InterFace);
 
   }
-  async readall3(_event3:Event){
+   readall3(_event3:Event){
     const pageNumber= (_event3.target as HTMLInputElement).value;
     this.InterFace.PageNumber=Number(pageNumber)-1;
-    return await this.GetAllEmps(this.InterFace);
+    return  this.GetAllEmps(this.InterFace);
 
   }
-   async GetAllEmps(data:any){
+  GetAllEmps(data:any){
 
-    const res = await this.service.GetData(data);
-    return await res;
+    return this.service.GetAllEmps(data);
     
 
   }
